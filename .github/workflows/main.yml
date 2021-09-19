@@ -4,9 +4,8 @@ name: CI
 
 # Controls when the action will run. 
 on:
-  schedule:
+
     # * is a special character in YAML so you have to quote this string
-    - cron:  '10 0/1 * * *'
   push:
     branches: 
       - master
