@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '10 0/1 * * *'
+  push:
+    branches: 
+      - master
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Run daka.py
+      run: |
+        python daka.py ${{ secrets.USERNAME }} ${{ secrets.PASSWORD }}
